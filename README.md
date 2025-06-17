@@ -4,17 +4,7 @@
 
 ---
 
-<p align="center">
-  <img src="https://via.placeholder.com/800x250.png?text=DanceBooking+App" alt="DanceBooking Logo"/>
-</p>
 
-<p align="center">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/tu-usuario/dance-booking-app">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/tu-usuario/dance-booking-app">
-  <img alt="License" src="https://img.shields.io/github/license/tu-usuario/dance-booking-app">
-</p>
-
----
 
 ## 📖 Tabla de Contenidos
 
