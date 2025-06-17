@@ -1,10 +1,9 @@
-// server/middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// Protege rutas: solo si hay un token válido
+// Protege rutas
 exports.protect = async (req, res, next) => {
-    console.log("PROTECT: Intento acceso a ruta protegida", req.method, req.originalUrl); // <-- AGREGÁ ESTO
+    console.log("PROTECT: Intento acceso a ruta protegida", req.method, req.originalUrl);
 
   let token;
   const authHeader = req.headers.authorization;
@@ -21,7 +20,7 @@ exports.protect = async (req, res, next) => {
   }
 };
 
-// Autoriza por rol: recibe una lista de roles permitidos
+
 exports.authorize = (...roles) => {
   return (req, res, next) => {
     if (!req.user) {

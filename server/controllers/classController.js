@@ -1,4 +1,3 @@
-// server/controllers/classController.js
 const Class = require('../models/class');
 const Booking = require('../models/booking');
 
@@ -29,7 +28,7 @@ exports.createClass = async (req, res, next) => {
   }
 };
 
-// Listar clases (para usuarios/instructores, puede filtrar por mine=true)
+// Listar clases 
 exports.getAllClasses = async (req, res, next) => {
   try {
     let filter = {};
@@ -60,7 +59,7 @@ exports.getClassById = async (req, res, next) => {
   }
 };
 
-// Actualizar clase (solo por instructor autorizado)
+// Actualizar clase 
 exports.updateClass = async (req, res, next) => {
   try {
     const clase = await Class.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -78,7 +77,7 @@ exports.deleteClass = async (req, res, next) => {
     const clase = await Class.findByIdAndDelete(req.params.id);
     if (!clase) return res.status(404).json({ error: "Clase no encontrada" });
 
-    // 2) Borra todas las inscripciones (bookings) de esa clase
+    // 2) Borra todas las inscripciones 
     const result = await Booking.deleteMany({ class: clase._id });
     console.log(`🗑️ Se eliminaron ${result.deletedCount} inscripciones de la clase ${clase._id}`);
 

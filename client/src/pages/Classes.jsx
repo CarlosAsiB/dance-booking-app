@@ -1,10 +1,9 @@
-// client/src/pages/Classes.jsx
 import { useEffect, useState } from "react";
 import API from "../api";
 import { useAuth } from "../contexts/authContext";
 
 export default function Classes() {
-  // const { user } = useAuth();
+  const { user } = useAuth();
   const [classes, setClasses] = useState([]);
   const [selected, setSelected] = useState(null);
   const [msg, setMsg] = useState("");

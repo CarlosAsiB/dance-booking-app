@@ -1,4 +1,3 @@
-// client/src/components/UserRow.jsx
 import React from "react";
 
 export default function UserRow({ user, onAction }) {

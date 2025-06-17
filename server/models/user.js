@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-// Pre-save hook: hashear la contraseña antes de guardar
+// Middleware para encriptar la contraseña antes de guardar el usuario
 userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next();
   try {

@@ -1,7 +1,6 @@
-// client/src/pages/Admin/ClassesPanel.jsx
 import React, { useEffect, useState } from "react";
 import API from "../../api";
-import { useAuth } from "../../contexts/authContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function ClassesPanel() {
   const { logout } = useAuth();

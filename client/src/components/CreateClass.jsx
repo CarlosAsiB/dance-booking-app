@@ -1,4 +1,3 @@
-// client/src/components/CreateClass.jsx
 import React, { useState } from "react";
 import API from "../../api";
 

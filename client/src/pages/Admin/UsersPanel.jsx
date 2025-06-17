@@ -1,4 +1,3 @@
-// client/src/pages/Admin/UsersPanel.jsx
 import { useEffect, useState } from "react";
 import API from "../../api";
 import { useAuth } from "../../contexts/authContext";

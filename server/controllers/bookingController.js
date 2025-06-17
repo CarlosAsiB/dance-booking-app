@@ -20,7 +20,7 @@ exports.bookClass = async (req, res, next) => {
       class: req.body.classId
     });
 
-    // 🚩 Importante: Agregá el booking al array de la clase
+    
     await Class.findByIdAndUpdate(
       req.body.classId,
       { $push: { bookings: booking._id } }

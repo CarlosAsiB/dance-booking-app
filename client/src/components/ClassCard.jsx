@@ -1,4 +1,3 @@
-// client/src/components/ClassCard.jsx
 import React from "react";
 
 export default function ClassCard({ classData, onBook, onCancel }) {

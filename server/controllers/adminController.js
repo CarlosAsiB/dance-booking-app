@@ -1,4 +1,3 @@
-// server/controllers/adminController.js
 const User = require('../models/User');
 const Class = require('../models/class');
 const Booking = require('../models/booking');
@@ -27,7 +26,7 @@ exports.deleteUser = async (req, res) => {
   res.json({ message: 'Usuario eliminado' });
 };
 
-// Listar todas las clases con inscriptos (detallado)
+// Listar todas las clases con inscriptos 
 exports.getAllClasses = async (req, res) => {
   const clases = await Class.find()
     .populate({
@@ -38,7 +37,7 @@ exports.getAllClasses = async (req, res) => {
   res.json({ data: clases });
 };
 
-// Crear clase como admin (puede elegir instructor por email)
+// Crear clase como admin 
 exports.createClass = async (req, res) => {
   let instructorId = req.body.instructor; // puede ser un ID o email
   // Si envía un email, buscar el ID

@@ -5,7 +5,7 @@ const classService = {
   getInstructorClasses:  ()               => API.get('/classes/instructor'),
   create:                classData        => API.post('/classes', classData),
   delete:                classId          => API.delete(`/classes/${classId}`),
-  // etc.
+  
 };
 
 export default classService;

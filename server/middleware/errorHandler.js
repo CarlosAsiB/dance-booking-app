@@ -1,5 +1,3 @@
-// server/middleware/errorHandler.js
-
 // Middleware de captura de errores
 function errorHandler (err, req, res, next) {
   console.error(err.stack);

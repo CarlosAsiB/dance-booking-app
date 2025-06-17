@@ -6,7 +6,7 @@ const userService = {
   update:     (id, data)   => API.put(`/users/${id}`, data),
   remove:     id           => API.delete(`/users/${id}`),
   getBookings: userId      => API.get(`/users/${userId}/bookings`),
-  // etc.
+ 
 };
 
 export default userService;
