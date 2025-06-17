@@ -1,153 +1,125 @@
-# DanceBooking App
+# 💃 DanceBooking App
 
-Aplicación full-stack para gestionar reservas de clases de baile, con roles de **usuario**, **instructor** y **admin**.
-
----
-
-## 📂 Estructura del proyecto
-
-dance-booking-app/
-├─ server/ # Backend (Node.js + Express + MongoDB)
-│ ├─ controllers/
-│ ├─ middleware/
-│ ├─ models/
-│ ├─ routes/
-│ ├─ config/
-│ ├─ scripts/
-│ ├─ .env.example
-│ ├─ package.json
-│ └─ server.js
-└─ client/ # Frontend (React + Vite + Tailwind CSS)
-├─ public/
-├─ src/
-│ ├─ api/
-│ ├─ components/
-│ ├─ contexts/
-│ ├─ pages/
-│ ├─ routes/
-│ ├─ App.jsx
-│ ├─ main.jsx
-│ └─ index.css
-├─ package.json
-└─ tailwind.config.js
-
+> **Sistema Full Stack para inscripción y gestión de clases de baile**
 
 ---
 
-## 🚀 Instalación
+<p align="center">
+  <img src="https://via.placeholder.com/800x250.png?text=DanceBooking+App" alt="DanceBooking Logo"/>
+</p>
 
-### 1. Clona el repositorio
-```bash
-git clone https://github.com/tu-usuario/dance-booking-app.git
+<p align="center">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/tu-usuario/dance-booking-app">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/tu-usuario/dance-booking-app">
+  <img alt="License" src="https://img.shields.io/github/license/tu-usuario/dance-booking-app">
+</p>
+
+---
+
+## 📖 Tabla de Contenidos
+
+- [✨ Características](#-características)
+- [🛠️ Tecnologías](#️-tecnologías)
+- [⚡ Instalación](#-instalación)
+- [🚦 Ejecución](#-ejecución)
+- [📑 Documentación de la API](#-documentación-de-la-api)
+- [🤝 Cómo contribuir](#-cómo-contribuir)
+- [📜 Licencia](#-licencia)
+
+---
+
+## ✨ Características
+
+- **Usuarios** pueden:
+  - Registrarse e iniciar sesión con autenticación JWT.
+  - Ver, inscribirse o cancelar inscripciones en clases.
+
+- **Instructores** pueden:
+  - Crear y gestionar sus propias clases.
+  - Ver usuarios inscritos en sus clases.
+
+- **Administradores** pueden:
+  - Gestionar usuarios y sus roles.
+  - Crear clases a nombre de instructores.
+  - Administrar inscripciones de usuarios.
+
+---
+
+## 🛠️ Tecnologías
+
+| Frontend | Backend          | Base de datos    | Estilos         |
+|----------|------------------|------------------|-----------------|
+| React    | Node.js + Express| MongoDB + Mongoose| TailwindCSS     |
+| Vite     | JWT + Bcrypt     |                 |                 |
+
+---
+
+## ⚡ Instalación
+
+1. **Clona el repositorio:**
+```sh
+git clone https://github.com/CarlosAsiB/dance-booking-app.git
 cd dance-booking-app
-2. Backend
-bash
-Copy
-Edit
+
+
+Configura el Backend:
 cd server
 npm install
 cp .env.example .env
-# Edita `.env` con tus variables:
-# MONGODB_URI, JWT_SECRET, SALT_ROUNDS, PORT
-npm run dev
-3. Frontend
-bash
-Copy
-Edit
+# Configura MONGODB_URI, JWT_SECRET y otros en .env
+
+
+Configura el Frontend:
 cd ../client
 npm install
-# Si quieres usar variables en el cliente, crea un `.env`:
-# VITE_API_BASE_URL=http://localhost:5000/api
+# (Opcional) Configura .env con URL del backend
+
+🚦 Ejecución
+
+Backend:
+cd server
+node server.js
+
+Frontend:
+cd client
 npm run dev
-Abre en el navegador: http://localhost:5173
 
-⚙️ Variables de entorno
-server/.env
-dotenv
-Copy
-Edit
-MONGODB_URI=your_mongo_connection_string
-JWT_SECRET=una_clave_secreta_para_jwt
-SALT_ROUNDS=10
-PORT=5000
-client/.env (opcional)
-dotenv
-Copy
-Edit
-VITE_API_BASE_URL=http://localhost:5000/api
-📋 Scripts disponibles
-Backend (server/package.json)
-npm run dev — Inicia con nodemon
 
-npm test — (pendiente)
+Accede en tu navegador: http://localhost:5173
 
-Frontend (client/package.json)
-npm run dev — Levanta Vite en modo desarrollo
 
-npm run build — Genera la versión de producción
 
-🛠 Tecnologías
-Backend: Node.js · Express · MongoDB · Mongoose · JWT · bcrypt
 
-Frontend: React · Vite · React Router · Context API · Tailwind CSS
+📑 Documentación de la API
+Ruta	Método	Descripción	Rol
+/api/auth/register	POST	Registrar usuario nuevo	Público
+/api/auth/login	POST	Iniciar sesión	Público
+/api/classes	GET	Obtener todas las clases	Usuario
+/api/classes/:id	GET	Obtener detalles de una clase	Usuario
+/api/classes	POST	Crear nueva clase	Instructor, Admin
+/api/bookings	POST	Inscribirse en una clase	Usuario
+/api/bookings/:id	DELETE	Cancelar inscripción	Usuario
+/api/admin/users	GET	Listar usuarios	Admin
+/api/admin/users/:id	DELETE	Eliminar usuario	Admin
+/api/admin/classes/:id/bookings	POST	Inscribir usuario por email	Admin
+/api/admin/classes/:id/bookings/:id	DELETE	Eliminar inscripción de usuario	Admin
 
-🔐 Seguridad & Buenas prácticas
-No subir el fichero .env real (ya incluido en .gitignore)
+🤝 Cómo contribuir
 
-Validación de datos con Mongoose + hooks
+¡Las contribuciones son bienvenidas!
 
-Rate limiting y Helmet (configurar en server.js si se desea)
+Haz un fork del proyecto.
 
-CORS configurado para tu dominio
+Crea una rama (git checkout -b nueva-funcionalidad)
 
-📖 Documentación de la API
-Auth
+Realiza tus cambios (git commit -m 'Añade funcionalidad')
 
-POST /api/auth/register
+Sube la rama (git push origin nueva-funcionalidad)
 
-POST /api/auth/login
+Crea una nueva Pull Request.
 
-Clases
+📜 Licencia
+Este proyecto está bajo la licencia MIT. Ver LICENSE para más información.
 
-GET /api/classes
-
-POST /api/classes (instructor/admin)
-
-GET /api/classes/:id
-
-PUT /api/classes/:id (instructor/admin)
-
-DELETE /api/classes/:id (instructor/admin)
-
-Bookings
-
-POST /api/bookings
-
-GET /api/bookings/user
-
-DELETE /api/bookings/:id
-
-Admin
-
-GET /api/admin/users
-
-POST /api/admin/users
-
-PUT /api/admin/users/:id/role
-
-DELETE /api/admin/users/:id
-
-GET /api/admin/classes
-
-POST /api/admin/classes
-
-DELETE /api/admin/classes/:id
-
-GET /api/admin/classes/:id/bookings
-
-POST /api/admin/classes/:id/bookings
-
-DELETE /api/admin/classes/:id/bookings/:bookingId
-
-🤝 Contribuciones
-¡Pull requests bienvenidos! Por favor abre issues para sugerencias o bugs.
+📝 Autor
+Hecho con ❤️ por Carlos Asi
