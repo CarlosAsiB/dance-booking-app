@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../api";
-import { useAuth } from "../../contexts/authContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function UsersPanel() {
   const { logout } = useAuth();

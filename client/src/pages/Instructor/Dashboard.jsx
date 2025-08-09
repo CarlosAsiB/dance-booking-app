@@ -3,7 +3,7 @@ import API from "../../api";
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function InstructorDashboard() {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
   const [myClasses, setMyClasses] = useState([]);
   const [msg, setMsg] = useState("");
   const [form, setForm] = useState({

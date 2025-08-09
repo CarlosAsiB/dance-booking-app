@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../api";
-import { useAuth } from "../contexts/authContext";
+import { useAuth } from "../contexts/AuthContext";
+import { Navigate } from "react-router-dom";
 
 export default function MyBookings() {
   const { user, logout } = useAuth();
