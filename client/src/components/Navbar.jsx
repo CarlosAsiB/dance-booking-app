@@ -38,10 +38,7 @@ export default function Navbar() {
                   <Link to="/admin/classes" className="text-gray-700 hover:text-indigo-600">Clases (Admin)</Link>
                 </>
               )}
-              <button
-                onClick={handleLogout}
-                className="ml-4 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-              >
+              <button onClick={handleLogout} className="ml-4 btn-danger">
                 Cerrar sesión
               </button>
             </>
