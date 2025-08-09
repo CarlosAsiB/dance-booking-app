@@ -9,6 +9,10 @@ exports.bookClass = async (req, res, next) => {
 
     // Chequea cupo
     const clase = await Class.findById(req.body.classId);
+    if (!clase) {
+      return res.status(404).json({ error: 'Clase no encontrada' });
+    }
+
     const inscriptos = await Booking.countDocuments({ class: req.body.classId });
     if (inscriptos >= clase.capacity) {
       return res.status(400).json({ error: 'La clase está llena' });
@@ -21,10 +25,8 @@ exports.bookClass = async (req, res, next) => {
     });
 
     
-    await Class.findByIdAndUpdate(
-      req.body.classId,
-      { $push: { bookings: booking._id } }
-    );
+    // El modelo Class define "bookings" como un virtual, por lo que no es necesario
+    // actualizar manualmente el documento de la clase.
 
     res.status(201).json({ data: booking });
   } catch (err) { next(err); }
@@ -46,12 +48,8 @@ exports.cancelBooking = async (req, res, next) => {
     // 2. Eliminar el booking
     await Booking.findByIdAndDelete(req.params.id);
 
-    // 3. Eliminar del array bookings en la clase asociada
-    await Class.findByIdAndUpdate(
-      booking.class,
-      { $pull: { bookings: booking._id } }
-    );
-
+    // Al usar un virtual para "bookings" en Class, no es necesario actualizar
+    // el documento de la clase después de eliminar la reserva.
     res.json({ message: 'Baja realizada' });
   } catch (err) { next(err); }
 };

@@ -1,6 +1,6 @@
 // client/src/pages/Login.jsx
 import React, { useState } from 'react';
-import { useAuth } from '../contexts/authContext';
+import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function Login() {
@@ -25,7 +25,7 @@ export default function Login() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow mt-10">
+    <div className="card max-w-md mx-auto mt-10">
       <h1 className="text-2xl font-bold mb-4">Iniciar sesión</h1>
       {err && <p className="text-red-600 mb-2">{err}</p>}
       <form className="space-y-4" onSubmit={handleSubmit}>
@@ -47,10 +47,7 @@ export default function Login() {
             className="w-full border rounded px-3 py-2"
           />
         </div>
-        <button
-          type="submit"
-          className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700"
-        >
+        <button type="submit" className="btn btn-primary w-full">
           Entrar
         </button>
       </form>
