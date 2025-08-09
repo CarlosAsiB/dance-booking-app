@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../api";
-import { useAuth } from "../contexts/authContext";
+import { useAuth } from "../contexts/AuthContext";
+import { Navigate } from "react-router-dom";
 
 export default function MyBookings() {
   const { user, logout } = useAuth();
@@ -31,26 +32,20 @@ export default function MyBookings() {
       {msg && <p className="mb-4 text-green-600">{msg}</p>}
       <ul className="space-y-4">
         {bookings.map(bk => (
-          <li key={bk._id} className="bg-white p-4 rounded-lg shadow flex justify-between items-center">
+          <li key={bk._id} className="card flex justify-between items-center">
             <div>
               <span className="font-semibold">{bk.class?.title}</span> —{" "}
               <span className="text-sm text-gray-600">
                 {bk.class && new Date(bk.class.startTime).toLocaleString()}
               </span>
             </div>
-            <button
-              onClick={() => cancelar(bk._id)}
-              className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-            >
+            <button onClick={() => cancelar(bk._id)} className="btn-danger">
               Darse de baja
             </button>
           </li>
         ))}
       </ul>
-      <button
-        onClick={() => logout()}
-        className="mt-6 px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-      >
+      <button onClick={() => logout()} className="btn-secondary mt-6">
         Cerrar sesión
       </button>
     </div>
